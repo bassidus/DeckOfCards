@@ -47,17 +47,19 @@ namespace DeckOfCards.Tests {
             // Draw a card and then return it to the bottom
             // of the deck
             var expected = deck.Draw();
-            deck.ReturnCard(expected);
+            var result = deck.ReturnCard(expected);
             var actual = deck[52];
 
+            Assert.IsTrue(result);
             // Make sure the same card is at place 52
             Assert.AreEqual(expected, actual);
 
             // Make sure you cant return an already existing card
             // to the deck
             expected = deck[26];
-            deck.ReturnCard(expected);
+            result = deck.ReturnCard(expected);
             actual = deck[52];
+            Assert.IsFalse(result);
             Assert.AreNotEqual(expected, actual);
         }
 

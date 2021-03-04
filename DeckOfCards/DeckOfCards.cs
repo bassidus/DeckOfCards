@@ -53,10 +53,12 @@ namespace DeckOfCards {
         /// <summary>
         /// Return a card to the deck
         /// </summary>
-        public void ReturnCard(Card card) {
+        public bool ReturnCard(Card card) {
             if (!deckOfCards.Contains(card)) {
                 deckOfCards.Enqueue(card);
+                return true;
             }
+            return false;
         }
 
         /// <summary>
